@@ -1,0 +1,19 @@
+language: python
+
+#which versions of python to test against
+python:
+  - "2.7"
+  - "3.3"
+
+# command to install dependencies
+install:
+  - pip install codecov
+  - pip install coverage
+
+
+script: 
+  - coverage run ./ci_play/factorial.py # command to run code coverage
+
+#can do additional things, say send out reports, which we will discuss next time
+after_success:
+ - codecov --token=f60446af-b68f-42d9-9623-cb67e98b0c4b # upload coverage report to codecov.io
